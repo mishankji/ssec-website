@@ -27,9 +27,10 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [isHome]);
 
-  // On the homepage the nav floats over the dark hero and only turns
-  // into a solid light bar once the visitor scrolls past it. Inner
-  // pages are always the solid light bar.
+  // On the homepage the nav starts as a translucent glass bar over the
+  // dark hero -- visible from the first frame, not fully transparent --
+  // then becomes the solid light bar once the visitor scrolls past the
+  // hero. Inner pages are always the solid light bar.
   const solid = !isHome || scrolled || open;
 
   return (
@@ -38,7 +39,7 @@ export function Nav() {
         "sticky top-0 z-50 w-full transition-colors duration-300",
         solid
           ? "bg-offwhite/95 backdrop-blur border-b border-forest/10 text-ink"
-          : "bg-transparent text-white"
+          : "bg-ink/40 backdrop-blur-md border-b border-white/10 text-white"
       )}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
