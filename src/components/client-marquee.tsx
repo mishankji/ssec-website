@@ -1,7 +1,6 @@
 import Image from "next/image";
 
-// Client logos placed in public/clients/. Two of these (AVVNL, JVVNL) are
-// best-effort labels -- confirm the exact names if they matter for alt text.
+// Client logos placed in public/clients/.
 const CLIENTS = [
   { name: "CP Plus", src: "/clients/cp-plus.png" },
   { name: "Kent", src: "/clients/kent.png" },
@@ -10,8 +9,8 @@ const CLIENTS = [
   { name: "Ensol", src: "/clients/ensol.png" },
   { name: "Maxop", src: "/clients/maxop.png" },
   { name: "Bharti Real Estate", src: "/clients/bharti-real-estate.png" },
-  { name: "AVVNL", src: "/clients/client-avvnl.png" },
-  { name: "JVVNL", src: "/clients/client-arch-mark.png" },
+  { name: "JVVNL", src: "/clients/jvvnl.png" },
+  { name: "AAI", src: "/clients/aai.png" },
   { name: "BSNL", src: "/clients/bsnl.png" },
   { name: "Vi", src: "/clients/vi.png" },
   { name: "NAV", src: "/clients/nav.png" },
