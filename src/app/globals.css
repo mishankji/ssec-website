@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  /* ---- SSEC design tokens ---- */
+  --color-forest: #2f4a3e;   /* primary */
+  --color-sage: #6b8f71;     /* secondary */
+  --color-brass: #c9a24b;    /* accent */
+  --color-ink: #0d1512;      /* near-black, dark theme bg */
+  --color-vivid: #5fd97a;    /* vivid green, dark theme accent */
+  --color-offwhite: #f7f8f3; /* inner page background */
+
+  --background: var(--color-offwhite);
+  --foreground: var(--color-ink);
+}
+
+@theme inline {
+  --color-forest: var(--color-forest);
+  --color-sage: var(--color-sage);
+  --color-brass: var(--color-brass);
+  --color-ink: var(--color-ink);
+  --color-vivid: var(--color-vivid);
+  --color-offwhite: var(--color-offwhite);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-heading: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+}
+
+/* Homepage hero (and any explicitly dark section) opts into this scope
+   rather than following OS-level dark mode -- the rest of the site
+   stays light regardless of the visitor's system theme. */
+.theme-dark {
+  --background: var(--color-ink);
+  --foreground: #f2f5f2;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
