@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Award, Eye, ShieldCheck, Repeat } from "lucide-react";
 import { Section, Eyebrow } from "@/components/section";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { Card } from "@/components/card";
 import { ClientMarquee } from "@/components/client-marquee";
 import { ProcessTimeline } from "@/components/process-timeline";
 import { ServicesHeaderBG } from "@/components/services-header-bg";
 import { ServiceFlipGrid } from "@/components/service-flip-grid";
+import { WhyChooseUsFlipGrid } from "@/components/why-choose-us-flip-grid";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -46,33 +45,6 @@ const PROCESS_STEPS = [
     animType: "certification",
   },
 ] as const;
-
-const WHY_CHOOSE_US = [
-  {
-    icon: Award,
-    title: "Certified & Compliant",
-    description:
-      "Licensed under CTO (Rajasthan SPCB) and EPR (CPCB), with ISO 9001 and ISO 14001 certification.",
-  },
-  {
-    icon: Eye,
-    title: "Traceable Process",
-    description:
-      "Full visibility into where your e-waste goes and how it's processed, from pickup to final recovery.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Secure Handling",
-    description:
-      "Certified data destruction and secure chain-of-custody for sensitive IT assets.",
-  },
-  {
-    icon: Repeat,
-    title: "Circular Economy Focus",
-    description:
-      "We prioritize material recovery and reuse over disposal, keeping resources in circulation.",
-  },
-];
 
 export default function ServicesPage() {
   return (
@@ -131,19 +103,7 @@ export default function ServicesPage() {
           <Eyebrow>Why Choose Us</Eyebrow>
         </ScrollReveal>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {WHY_CHOOSE_US.map((item, i) => (
-            <ScrollReveal key={item.title} delay={i * 0.1}>
-              <Card>
-                <item.icon className="text-brass" size={28} />
-                <h3 className="font-heading mt-4 text-xl font-semibold text-forest">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm text-ink/70">{item.description}</p>
-              </Card>
-            </ScrollReveal>
-          ))}
-        </div>
+        <WhyChooseUsFlipGrid />
       </Section>
 
       <Section className="theme-dark bg-ink text-offwhite">
