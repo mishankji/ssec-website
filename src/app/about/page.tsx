@@ -1,22 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Target,
-  Eye,
-  Leaf,
-  ShieldCheck,
-  Lightbulb,
-  HeartHandshake,
-  FileCheck,
-  Recycle,
-  Award,
-  Globe,
-} from "lucide-react";
+import { Target, Eye, Leaf, ShieldCheck, Lightbulb, HeartHandshake } from "lucide-react";
 import { Section, Eyebrow } from "@/components/section";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Card } from "@/components/card";
 import { AboutHeaderBG } from "@/components/about-header-bg";
+import { PhotoSlideshow } from "@/components/photo-slideshow";
+
+const WHY_WE_EXIST_IMAGES = [
+  "/hero/hero-team-sorting.jpg",
+  "/hero/hero-ac-units.jpg",
+  "/hero/hero-collection-drive.jpg",
+];
 
 export const metadata: Metadata = {
   title: "About",
@@ -41,24 +37,22 @@ const MISSION_VISION = [
 
 const CERTIFICATIONS = [
   {
-    icon: FileCheck,
+    logo: "/certifications/rspcb.png",
     title: "CTO Authorization",
-    description:
-      "Consent to Operate, Rajasthan State Pollution Control Board",
+    description: "Rajasthan State Pollution Control Board",
   },
   {
-    icon: Recycle,
+    logo: "/certifications/cpcb.png",
     title: "EPR Authorization",
-    description:
-      "Extended Producer Responsibility, Central Pollution Control Board",
+    description: "Central Pollution Control Board",
   },
   {
-    icon: Award,
-    title: "ISO 9001",
-    description: "Quality Management System",
+    logo: "/certifications/iso-45001.png",
+    title: "ISO 45001",
+    description: "Occupational Health & Safety Management System",
   },
   {
-    icon: Globe,
+    logo: "/certifications/iso-14001.png",
     title: "ISO 14001",
     description: "Environmental Management System",
   },
@@ -164,22 +158,30 @@ export default function AboutPage() {
       </Section>
 
       <Section>
-        <ScrollReveal>
-          <Eyebrow>Why We Exist</Eyebrow>
-          <p className="mt-4 max-w-2xl text-ink/70">
-            India generates over 1.8 million tonnes of e-waste every year —
-            and an estimated 90% of it is still handled by the informal
-            sector, often without basic safety measures or environmental
-            safeguards.
-          </p>
-          <p className="mt-4 max-w-2xl text-ink/70">
-            SS Envirocare was founded because we saw this gap up close:
-            valuable resources being lost, and people handling hazardous
-            material without protection. We started in Jaipur with a simple
-            aim — build a recycling operation that does this properly:
-            certified, safe, and accountable at every step.
-          </p>
-        </ScrollReveal>
+        <div className="grid gap-10 md:grid-cols-2 md:items-center">
+          <ScrollReveal>
+            <Eyebrow>Why We Exist</Eyebrow>
+            <p className="mt-4 max-w-2xl text-ink/70">
+              India generates over 1.8 million tonnes of e-waste every year —
+              and an estimated 90% of it is still handled by the informal
+              sector, often without basic safety measures or environmental
+              safeguards.
+            </p>
+            <p className="mt-4 max-w-2xl text-ink/70">
+              SS Envirocare was founded because we saw this gap up close:
+              valuable resources being lost, and people handling hazardous
+              material without protection. We started in Jaipur with a
+              simple aim — build a recycling operation that does this
+              properly: certified, safe, and accountable at every step.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.15}>
+            <PhotoSlideshow
+              images={WHY_WE_EXIST_IMAGES}
+              className="aspect-[4/3]"
+            />
+          </ScrollReveal>
+        </div>
       </Section>
 
       <Section className="bg-forest/5">
@@ -200,17 +202,22 @@ export default function AboutPage() {
 
       <Section>
         <ScrollReveal>
-          <Eyebrow>Certifications</Eyebrow>
-          <h2 className="mt-3 max-w-2xl font-heading text-3xl font-semibold text-forest md:text-4xl">
-            Our Licenses & Certifications
-          </h2>
+          <Eyebrow>Licenses and Certifications</Eyebrow>
         </ScrollReveal>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {CERTIFICATIONS.map((item, i) => (
             <ScrollReveal key={item.title} delay={i * 0.1}>
               <Card>
-                <item.icon className="text-brass" size={28} />
+                <div className="relative h-14 w-14">
+                  <Image
+                    src={item.logo}
+                    alt={item.title}
+                    fill
+                    sizes="56px"
+                    className="object-contain"
+                  />
+                </div>
                 <h3 className="font-heading mt-4 text-lg font-semibold text-forest">
                   {item.title}
                 </h3>
