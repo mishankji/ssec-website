@@ -17,6 +17,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { Card } from "@/components/card";
 import { ClientMarquee } from "@/components/client-marquee";
 import { ProcessTimeline } from "@/components/process-timeline";
+import { ServicesHeaderBG } from "@/components/services-header-bg";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -120,17 +121,20 @@ const WHY_CHOOSE_US = [
 export default function ServicesPage() {
   return (
     <>
-      <Section className="pt-32 md:pt-40">
-        <ScrollReveal>
-          <Eyebrow>Services</Eyebrow>
-          <h1 className="mt-3 max-w-3xl font-heading text-4xl font-semibold text-forest md:text-5xl">
-            Our Services
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-ink/70">
-            End-to-end e-waste management, from doorstep collection to
-            certified material recovery.
-          </p>
-        </ScrollReveal>
+      <Section className="relative overflow-hidden pt-32 md:pt-40">
+        <ServicesHeaderBG />
+        <div className="relative z-10">
+          <ScrollReveal>
+            <Eyebrow>Services</Eyebrow>
+            <h1 className="mt-3 max-w-3xl font-heading text-4xl font-semibold text-forest md:text-5xl">
+              Our Services
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg text-ink/70">
+              End-to-end e-waste management, from doorstep collection to
+              certified material recovery.
+            </p>
+          </ScrollReveal>
+        </div>
       </Section>
 
       <Section>
