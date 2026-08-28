@@ -26,7 +26,7 @@ export function HeroSlideshow({ images }: { images: string[] }) {
       {images.map((src, i) => (
         <div
           key={src}
-          className="absolute -inset-4 scale-110 transition-opacity ease-in-out"
+          className="absolute -inset-1 scale-[1.02] transition-opacity ease-in-out"
           style={{
             opacity: i === current ? 1 : 0,
             transitionDuration: `${FADE_MS}ms`,
@@ -36,7 +36,7 @@ export function HeroSlideshow({ images }: { images: string[] }) {
           <img
             src={src}
             alt=""
-            className="h-full w-full object-cover blur-[10px]"
+            className="h-full w-full object-cover blur-[3px]"
           />
         </div>
       ))}
