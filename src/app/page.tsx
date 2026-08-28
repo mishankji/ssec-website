@@ -5,6 +5,7 @@ import { Section, Eyebrow } from "@/components/section";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { CountUpStat } from "@/components/count-up-stat";
 import { Card } from "@/components/card";
+import { RecycleConverge } from "@/components/recycle-converge";
 
 // Placeholder content -- replace with the finished Home page design.
 const SERVICES_PREVIEW = [
@@ -35,11 +36,10 @@ export default function Home() {
 
       {/* Stats band continues the dark theme just below the hero */}
       <section className="theme-dark bg-ink px-6 py-16 text-offwhite">
-        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 md:grid-cols-4">
-          <CountUpStat value={10000} suffix="+" label="kg e-waste recycled" />
-          <CountUpStat value={500} suffix="+" label="businesses served" />
-          <CountUpStat value={15} suffix="+" label="years of experience" />
-          <CountUpStat value={100} suffix="%" label="certified disposal" />
+        <div className="mx-auto grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-3">
+          <CountUpStat value={6500000} suffix="+" label="kg e-waste handled" />
+          <CountUpStat value={100} suffix="%" label="certified" />
+          <CountUpStat value={10000} suffix="+" label="households impacted" />
         </div>
       </section>
 
@@ -97,7 +97,9 @@ export default function Home() {
             </Link>
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
-            <div className="aspect-video rounded-2xl bg-sage/20" />
+            <div className="overflow-hidden rounded-2xl bg-sage/5 ring-1 ring-forest/10">
+              <RecycleConverge color="#6B8F71" height={320} />
+            </div>
           </ScrollReveal>
         </div>
       </Section>
