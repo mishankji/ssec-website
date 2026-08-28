@@ -7,6 +7,7 @@ import { ProcessTimeline } from "@/components/process-timeline";
 import { ServicesHeaderBG } from "@/components/services-header-bg";
 import { ServiceFlipGrid } from "@/components/service-flip-grid";
 import { WhyChooseUsFlipGrid } from "@/components/why-choose-us-flip-grid";
+import { ComplianceIllustration } from "@/components/compliance-illustration";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -85,17 +86,24 @@ export default function ServicesPage() {
       </Section>
 
       <Section>
-        <ScrollReveal>
-          <Eyebrow>Compliance & Reporting</Eyebrow>
-          <h2 className="mt-3 max-w-2xl font-heading text-3xl font-semibold text-forest md:text-4xl">
-            Compliance, Handled
-          </h2>
-          <p className="mt-4 max-w-2xl text-ink/70">
-            We handle the paperwork so you don&apos;t have to. Every
-            collection is documented, and clients receive certificates of
-            recycling and EPR compliance reports for their records.
-          </p>
-        </ScrollReveal>
+        <div className="grid gap-10 md:grid-cols-2 md:items-center">
+          <ScrollReveal>
+            <Eyebrow>Compliance & Reporting</Eyebrow>
+            <h2 className="mt-3 max-w-2xl font-heading text-3xl font-semibold text-forest md:text-4xl">
+              Compliance, Handled
+            </h2>
+            <p className="mt-4 max-w-lg text-ink/70">
+              We handle the paperwork so you don&apos;t have to. Every
+              collection is documented, and clients receive certificates of
+              recycling and EPR compliance reports for their records.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.15}>
+            <div className="flex items-center justify-center overflow-hidden rounded-2xl bg-sage/5 py-10 ring-1 ring-forest/10">
+              <ComplianceIllustration />
+            </div>
+          </ScrollReveal>
+        </div>
       </Section>
 
       <Section className="bg-forest/5">
