@@ -19,28 +19,33 @@ const PROCESS_STEPS = [
     title: "Collection",
     description:
       "We collect e-waste directly from your premises via scheduled pickup.",
+    animType: "collection",
   },
   {
     title: "Sorting & Grading",
     description:
       "Devices are weighed and segregated to determine reuse, refurbishment, or recycling pathways.",
+    animType: "sorting",
   },
   {
     title: "Dismantling",
     description:
       "Equipment is carefully disassembled into material streams -- metals, plastics, glass, and circuit boards.",
+    animType: "dismantling",
   },
   {
     title: "Recovery & Recycling",
     description:
       "Valuable materials are recovered and channeled back into the manufacturing supply chain.",
+    animType: "recovery",
   },
   {
     title: "Certification",
     description:
       "Clients receive documentation and certificates of recycling/destruction for compliance records.",
+    animType: "certification",
   },
-];
+] as const;
 
 const WHY_CHOOSE_US = [
   {

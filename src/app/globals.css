@@ -69,6 +69,144 @@ h6 {
   animation: marquee 32s linear infinite;
 }
 
+/* Our Process step hover animations (src/components/process-step-icons.tsx) --
+   each step's small sketch-style illustration plays once on hover, then
+   holds its final frame. */
+@keyframes driveIn {
+  from {
+    transform: translateX(-70px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes wheelSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-16px);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(16px);
+  }
+}
+
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 60;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes splitLeft {
+  0%,
+  30% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-9px) rotate(-4deg);
+  }
+}
+
+@keyframes splitRight {
+  0%,
+  30% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(9px) rotate(4deg);
+  }
+}
+
+@keyframes fragmentIn {
+  from {
+    transform: translate(var(--fx), var(--fy));
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 1;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 0.3;
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  60% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+}
+
+@keyframes stampDrop {
+  0% {
+    transform: translateY(-40px) scale(1.1);
+    opacity: 0;
+  }
+  55% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  65% {
+    transform: translateY(2px) scale(0.96);
+  }
+  75% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes checkDraw {
+  0%,
+  70% {
+    stroke-dashoffset: 24;
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
