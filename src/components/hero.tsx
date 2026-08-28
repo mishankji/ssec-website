@@ -2,43 +2,46 @@
 
 import { motion } from "framer-motion";
 import { ParticleField } from "@/components/particle-field";
+import { HeroSlideshow } from "@/components/hero-slideshow";
+
+// Background photos for the hero slideshow, in public/hero/.
+const HERO_IMAGES = [
+  "/hero/hero-team-sorting.jpg",
+  "/hero/hero-ac-units.jpg",
+  "/hero/hero-collection-drive.jpg",
+];
 
 /**
- * Homepage hero. Dark theme, full-bleed background media, centered
- * quote overlay, subtle particle drift. Swap `backgroundSrc` for the
- * final video/photo asset when it's ready -- everything else in the
- * design system stays the same.
+ * Homepage hero. Dark theme, full-bleed blurred photo slideshow with a
+ * dark gradient overlay, particle drift on top, centered quote overlay.
  */
 export function Hero({
   quote,
   attribution,
-  backgroundSrc,
 }: {
   quote: string;
   attribution?: string;
-  backgroundSrc?: string;
 }) {
   return (
     <section className="theme-dark relative flex h-[92vh] min-h-[560px] w-full items-center justify-center overflow-hidden bg-ink text-offwhite">
-      {/* Background media placeholder -- swap for video/photo */}
-      <div className="absolute inset-0">
-        {backgroundSrc ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={backgroundSrc}
-            alt=""
-            className="h-full w-full object-cover opacity-50"
-          />
-        ) : (
-          <div className="h-full w-full bg-[radial-gradient(circle_at_50%_30%,_rgba(107,143,113,0.35),_transparent_60%),linear-gradient(180deg,_#0d1512_0%,_#122019_60%,_#0d1512_100%)]" />
-        )}
+      {/* Layer 1: blurred photo slideshow, on a gradient base color so
+          there's no flash before the first photo paints. */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 30%, rgba(107,143,113,0.35), transparent 60%), linear-gradient(180deg, #0d1512 0%, #122019 60%, #0d1512 100%)",
+        }}
+      >
+        <HeroSlideshow images={HERO_IMAGES} />
+        {/* Layer 2: dark overlay, keeps the quote text readable. */}
         <div className="absolute inset-0 bg-ink/40" />
       </div>
 
-      {/* Particle layer */}
+      {/* Layer 3: particle drift, crisp and unblurred, on top of the photos. */}
       <ParticleField className="absolute inset-0" />
 
-      {/* Quote overlay */}
+      {/* Layer 4: quote overlay */}
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
