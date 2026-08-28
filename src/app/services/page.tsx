@@ -1,67 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  Truck,
-  Lock,
-  Wrench,
-  Recycle,
-  FileCheck,
-  Handshake,
-  Award,
-  Eye,
-  ShieldCheck,
-  Repeat,
-} from "lucide-react";
+import { Award, Eye, ShieldCheck, Repeat } from "lucide-react";
 import { Section, Eyebrow } from "@/components/section";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Card } from "@/components/card";
 import { ClientMarquee } from "@/components/client-marquee";
 import { ProcessTimeline } from "@/components/process-timeline";
 import { ServicesHeaderBG } from "@/components/services-header-bg";
+import { ServiceFlipGrid } from "@/components/service-flip-grid";
 
 export const metadata: Metadata = {
   title: "Services",
   description: "E-waste collection, data destruction, and recycling services from S S Enviro Care.",
 };
-
-const SERVICES = [
-  {
-    icon: Truck,
-    title: "E-Waste Collection",
-    description:
-      "Scheduled pickup for both households and businesses across Jaipur and Rajasthan, any device, any volume.",
-  },
-  {
-    icon: Lock,
-    title: "ITAD & Data Destruction",
-    description:
-      "Certified IT asset disposition with secure data wiping and physical destruction of storage media, protecting client confidentiality.",
-  },
-  {
-    icon: Wrench,
-    title: "Dismantling & Material Recovery",
-    description:
-      "Expert disassembly of electronics to recover valuable metals, plastics, and components for reuse.",
-  },
-  {
-    icon: Recycle,
-    title: "Metal Scrap Recycling & Trading",
-    description:
-      "Processing and trading of ferrous and non-ferrous metal scrap alongside our e-waste operations.",
-  },
-  {
-    icon: FileCheck,
-    title: "EPR Compliance",
-    description:
-      "End-to-end Extended Producer Responsibility documentation and reporting for manufacturers and brand owners.",
-  },
-  {
-    icon: Handshake,
-    title: "Buyback Programs",
-    description:
-      "Fair-value buyback for functional and recoverable equipment from businesses looking to upgrade.",
-  },
-];
 
 const PROCESS_STEPS = [
   {
@@ -142,21 +93,7 @@ export default function ServicesPage() {
           <Eyebrow>What We Offer</Eyebrow>
         </ScrollReveal>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((item, i) => (
-            <ScrollReveal key={item.title} delay={i * 0.08}>
-              <Card>
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-forest/10 text-forest transition-all duration-300 ease-out group-hover:scale-110 group-hover:bg-forest/15 group-hover:shadow-[0_0_0_8px_rgba(201,162,75,0.12)]">
-                  <item.icon size={26} />
-                </div>
-                <h3 className="font-heading mt-4 text-lg font-semibold text-forest">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm text-ink/70">{item.description}</p>
-              </Card>
-            </ScrollReveal>
-          ))}
-        </div>
+        <ServiceFlipGrid />
       </Section>
 
       <Section className="bg-forest/5">
