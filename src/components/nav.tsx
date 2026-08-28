@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -45,10 +46,17 @@ export function Nav() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="font-heading text-lg font-semibold tracking-tight"
+          className="flex items-center"
           onClick={() => setOpen(false)}
         >
-          S S Enviro Care
+          <Image
+            src="/brand/logo.png"
+            alt="SS Envirocare"
+            width={190}
+            height={26}
+            priority
+            className="h-6 w-auto md:h-7"
+          />
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">

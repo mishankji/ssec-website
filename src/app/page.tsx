@@ -31,10 +31,7 @@ const SERVICES_PREVIEW = [
 export default function Home() {
   return (
     <>
-      <Hero
-        quote="Turning yesterday's electronics into tomorrow's resources."
-        attribution="S S Enviro Care — Jaipur"
-      />
+      <Hero quote="Turning yesterday's electronics into tomorrow's resources." />
 
       {/* Stats band continues the dark theme just below the hero */}
       <section className="theme-dark bg-ink px-6 py-16 text-offwhite">
