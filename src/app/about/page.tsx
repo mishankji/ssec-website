@@ -1,80 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { Target, Eye, Leaf, ShieldCheck, Lightbulb, HeartHandshake } from "lucide-react";
 import { Section, Eyebrow } from "@/components/section";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { Card } from "@/components/card";
 import { AboutHeaderBG } from "@/components/about-header-bg";
+import { MissionVisionFlipGrid } from "@/components/mission-vision-flip-grid";
+import { CertificationsFlipGrid } from "@/components/certifications-flip-grid";
+import { CoreValuesFlipGrid } from "@/components/core-values-flip-grid";
 
 export const metadata: Metadata = {
   title: "About",
   description:
     "Learn about S S Enviro Care's mission, values, and approach to certified e-waste recycling in Jaipur.",
 };
-
-const MISSION_VISION = [
-  {
-    icon: Target,
-    title: "Our Mission",
-    description:
-      "To make responsible e-waste disposal accessible and accountable for every business and household in Rajasthan.",
-  },
-  {
-    icon: Eye,
-    title: "Our Vision",
-    description:
-      "A future where no electronic device ends up in a landfill or an informal, unsafe recycling chain.",
-  },
-];
-
-const CERTIFICATIONS = [
-  {
-    logo: "/certifications/rspcb.png",
-    title: "CTO Authorization",
-    description: "Rajasthan State Pollution Control Board",
-  },
-  {
-    logo: "/certifications/cpcb.png",
-    title: "EPR Authorization",
-    description: "Central Pollution Control Board",
-  },
-  {
-    logo: "/certifications/iso-45001.png",
-    title: "ISO 45001",
-    description: "Occupational Health & Safety Management System",
-  },
-  {
-    logo: "/certifications/iso-14001.png",
-    title: "ISO 14001",
-    description: "Environmental Management System",
-  },
-];
-
-const CORE_VALUES = [
-  {
-    icon: Leaf,
-    title: "Sustainability",
-    description: "Environmentally responsible practices in everything we do.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Integrity",
-    description: "Transparency, honesty, and the highest ethical standards.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    description:
-      "Continuously improving processes to maximize resource recovery.",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Collaboration",
-    description:
-      "Working with clients, regulators, and communities toward shared goals.",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -112,19 +49,7 @@ export default function AboutPage() {
       </Section>
 
       <Section className="bg-forest/5">
-        <div className="grid gap-6 md:grid-cols-2">
-          {MISSION_VISION.map((item, i) => (
-            <ScrollReveal key={item.title} delay={i * 0.1}>
-              <Card>
-                <item.icon className="text-brass" size={28} />
-                <h3 className="font-heading mt-4 text-xl font-semibold text-forest">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm text-ink/70">{item.description}</p>
-              </Card>
-            </ScrollReveal>
-          ))}
-        </div>
+        <MissionVisionFlipGrid />
       </Section>
 
       <Section>
@@ -132,27 +57,7 @@ export default function AboutPage() {
           <Eyebrow>Licenses and Certifications</Eyebrow>
         </ScrollReveal>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {CERTIFICATIONS.map((item, i) => (
-            <ScrollReveal key={item.title} delay={i * 0.1}>
-              <Card className="text-center">
-                <div className="relative mx-auto h-14 w-14">
-                  <Image
-                    src={item.logo}
-                    alt={item.title}
-                    fill
-                    sizes="56px"
-                    className="object-contain"
-                  />
-                </div>
-                <h3 className="font-heading mt-4 text-lg font-semibold text-forest">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm text-ink/70">{item.description}</p>
-              </Card>
-            </ScrollReveal>
-          ))}
-        </div>
+        <CertificationsFlipGrid />
       </Section>
 
       <Section className="bg-forest/5">
@@ -163,19 +68,7 @@ export default function AboutPage() {
           </h2>
         </ScrollReveal>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {CORE_VALUES.map((item, i) => (
-            <ScrollReveal key={item.title} delay={i * 0.1}>
-              <Card>
-                <item.icon className="text-brass" size={28} />
-                <h3 className="font-heading mt-4 text-xl font-semibold text-forest">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm text-ink/70">{item.description}</p>
-              </Card>
-            </ScrollReveal>
-          ))}
-        </div>
+        <CoreValuesFlipGrid />
       </Section>
 
       <Section className="theme-dark bg-ink text-offwhite">

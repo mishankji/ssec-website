@@ -19,7 +19,7 @@ const WHY_CHOOSE_US = [
     icon: Award,
     title: "Certified & Compliant",
     description:
-      "Licensed under CTO (Rajasthan SPCB) and EPR (CPCB), with ISO 9001 and ISO 14001 certification.",
+      "Licensed under CTO (Rajasthan SPCB) and EPR (CPCB), with ISO 45001 and ISO 14001 certification.",
     Illustration: CertifiedIllustration,
   },
   {
