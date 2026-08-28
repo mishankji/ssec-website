@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 function useInView(threshold = 0.4) {
   const ref = useRef<HTMLDivElement>(null);
@@ -52,7 +52,7 @@ function Stat({
 }: {
   value: number;
   suffix: string;
-  label: string;
+  label: ReactNode;
 }) {
   const [ref, inView] = useInView(0.4);
   const count = useCountUp(value, 1800, inView);
@@ -70,49 +70,23 @@ function Stat({
   );
 }
 
-function CarIcon() {
-  return (
-    <svg viewBox="0 0 100 60" width={80} height={48}>
-      <rect
-        x={20}
-        y={26}
-        width={56}
-        height={18}
-        rx={4}
-        fill="none"
-        stroke="var(--color-forest)"
-        strokeWidth={2.6}
-      />
-      <path
-        d="M30 26 l8 -10 h24 l8 10"
-        fill="none"
-        stroke="var(--color-forest)"
-        strokeWidth={2.6}
-        strokeLinejoin="round"
-      />
-      <circle cx={34} cy={46} r={6} fill="none" stroke="var(--color-ink)" strokeWidth={2.4} />
-      <circle cx={66} cy={46} r={6} fill="none" stroke="var(--color-ink)" strokeWidth={2.4} />
-    </svg>
-  );
-}
-
 export function EquivalenciesSection() {
   return (
     <>
-      <div className="grid items-center gap-8 sm:grid-cols-3">
+      <div className="grid items-start gap-8 sm:grid-cols-3">
         <Stat value={6600} suffix="+" label="Tonnes Processed / Year" />
         <Stat value={18700} suffix="" label="Metric Tons CO2e Avoided / Year" />
-        <div className="flex flex-col items-center">
-          <CarIcon />
-          <div className="font-heading mt-1 text-[clamp(1.8rem,3vw,2.4rem)] font-bold text-forest">
-            &asymp; 4,060
-          </div>
-          <div className="mt-1 text-center text-[0.82rem] uppercase tracking-wide text-ink/60">
-            Passenger Vehicles&rsquo; Annual
-            <br />
-            Emissions, Avoided
-          </div>
-        </div>
+        <Stat
+          value={4060}
+          suffix=""
+          label={
+            <>
+              Passenger Vehicles&rsquo; Annual
+              <br />
+              Emissions, Avoided
+            </>
+          }
+        />
       </div>
 
       <p className="mx-auto mt-8 max-w-xl text-center text-[0.78rem] italic leading-relaxed text-ink/50">
