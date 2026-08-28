@@ -16,6 +16,7 @@ import {
 import { Section, Eyebrow } from "@/components/section";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Card } from "@/components/card";
+import { AboutHeaderBG } from "@/components/about-header-bg";
 
 export const metadata: Metadata = {
   title: "About",
@@ -149,14 +150,17 @@ const GOV_SCHEMES = [
 export default function AboutPage() {
   return (
     <>
-      <Section className="pt-32 md:pt-40">
-        <ScrollReveal>
-          <Eyebrow>About S S Enviro Care</Eyebrow>
-          <h1 className="mt-3 max-w-3xl font-heading text-4xl font-semibold text-forest md:text-5xl">
-            A young company, built on certified, accountable e-waste
-            recycling.
-          </h1>
-        </ScrollReveal>
+      <Section className="relative overflow-hidden pt-32 md:pt-40">
+        <AboutHeaderBG />
+        <div className="relative z-10">
+          <ScrollReveal>
+            <Eyebrow>About S S Enviro Care</Eyebrow>
+            <h1 className="mt-3 max-w-3xl font-heading text-4xl font-semibold text-forest md:text-5xl">
+              A young company, built on certified, accountable e-waste
+              recycling.
+            </h1>
+          </ScrollReveal>
+        </div>
       </Section>
 
       <Section>
