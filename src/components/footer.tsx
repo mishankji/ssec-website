@@ -15,8 +15,9 @@ export function Footer() {
         <div>
           <p className="font-heading text-lg font-semibold">S S Enviro Care</p>
           <p className="mt-3 max-w-xs text-sm text-offwhite/75">
-            Certified e-waste recycling and responsible electronics
-            disposal, based in Jaipur, Rajasthan.
+            Committed to responsible e-waste recycling and sustainable
+            environmental solutions. Making our planet cleaner, one device
+            at a time.
           </p>
         </div>
 
@@ -45,11 +46,11 @@ export function Footer() {
           <ul className="mt-4 space-y-3 text-sm text-offwhite/80">
             <li className="flex items-start gap-2">
               <MapPin size={16} className="mt-0.5 shrink-0 text-sage" />
-              <span>Jaipur, Rajasthan, India</span>
+              <span>E-216 (B), RIA, Sarna Dungar, Jaipur, Rajasthan 302012</span>
             </li>
             <li className="flex items-center gap-2">
               <Phone size={16} className="shrink-0 text-sage" />
-              <span>+91 00000 00000</span>
+              <span>+91-96539 63036</span>
             </li>
             <li className="flex items-center gap-2">
               <Mail size={16} className="shrink-0 text-sage" />

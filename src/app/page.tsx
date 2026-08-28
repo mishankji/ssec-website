@@ -6,6 +6,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { CountUpStat } from "@/components/count-up-stat";
 import { Card } from "@/components/card";
 import { RecycleConverge } from "@/components/recycle-converge";
+import { ClientMarquee } from "@/components/client-marquee";
 
 // Placeholder content -- replace with the finished Home page design.
 const SERVICES_PREVIEW = [
@@ -102,6 +103,17 @@ export default function Home() {
             </div>
           </ScrollReveal>
         </div>
+      </Section>
+
+      <Section className="bg-forest/5">
+        <ScrollReveal className="text-center">
+          <h2 className="font-heading text-2xl font-semibold text-forest md:text-3xl">
+            Trusted By
+          </h2>
+        </ScrollReveal>
+        <ScrollReveal delay={0.1} className="mt-10">
+          <ClientMarquee />
+        </ScrollReveal>
       </Section>
 
       <Section className="theme-dark bg-ink text-offwhite">

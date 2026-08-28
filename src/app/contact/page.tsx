@@ -45,11 +45,11 @@ export default function ContactPage() {
             <Card className="space-y-4">
               <div className="flex items-center gap-3">
                 <MapPin className="text-brass" size={20} />
-                <span className="text-sm text-ink/80">Jaipur, Rajasthan, India</span>
+                <span className="text-sm text-ink/80">E-216 (B), RIA, Sarna Dungar, Jaipur, Rajasthan 302012</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="text-brass" size={20} />
-                <span className="text-sm text-ink/80">+91 00000 00000</span>
+                <span className="text-sm text-ink/80">+91-96539 63036</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="text-brass" size={20} />
