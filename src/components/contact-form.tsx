@@ -63,7 +63,7 @@ export function ContactForm() {
           Message sent
         </h3>
         <p className="mt-2 text-sm text-ink/70">
-          Thanks for reaching out -- our team will get back to you within one
+          Thanks for reaching out. Our team will get back to you within one
           business day.
         </p>
         <button

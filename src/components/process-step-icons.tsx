@@ -92,7 +92,12 @@ function CollectionAnim({ playKey }: { playKey: number }) {
 function SortingAnim({ playKey }: { playKey: number }) {
   return (
     <svg key={playKey} viewBox="0 0 100 60" width="72" height="44">
-      <g style={{ animation: "slideLeft 1.6s 0.4s ease-out forwards" }}>
+      <g
+        style={{
+          animation:
+            "slideLeft 1.6s 0.4s ease-out forwards, sortIdleTop 2.4s 2s ease-in-out infinite",
+        }}
+      >
         <rect
           x="38"
           y="18"
@@ -105,7 +110,12 @@ function SortingAnim({ playKey }: { playKey: number }) {
         />
         <line x1="34" y1="33" x2="64" y2="33" stroke={C.primary} strokeWidth="2" />
       </g>
-      <g style={{ animation: "slideRight 1.6s 0.4s ease-out forwards" }}>
+      <g
+        style={{
+          animation:
+            "slideRight 1.6s 0.4s ease-out forwards, sortIdleBottom 2.4s 2s ease-in-out infinite",
+        }}
+      >
         <rect
           x="46"
           y="36"
@@ -127,7 +137,8 @@ function DismantlingAnim({ playKey }: { playKey: number }) {
     <svg key={playKey} viewBox="0 0 100 60" width="72" height="44">
       <g
         style={{
-          animation: "splitLeft 1.8s ease-out forwards",
+          animation:
+            "splitLeft 1.8s ease-out forwards, dismantleIdleLeft 2.2s 1.8s ease-in-out infinite",
           transformOrigin: "36px 30px",
         }}
       >
@@ -135,7 +146,8 @@ function DismantlingAnim({ playKey }: { playKey: number }) {
       </g>
       <g
         style={{
-          animation: "splitRight 1.8s ease-out forwards",
+          animation:
+            "splitRight 1.8s ease-out forwards, dismantleIdleRight 2.2s 1.8s ease-in-out infinite",
           transformOrigin: "64px 30px",
         }}
       >
@@ -150,7 +162,8 @@ function DismantlingAnim({ playKey }: { playKey: number }) {
         strokeWidth="1.6"
         strokeDasharray="4 3"
         style={{
-          animation: "drawLine 0.5s 0.9s ease-out forwards",
+          animation:
+            "drawLine 0.5s 0.9s ease-out forwards, dividerPulse 1.8s 1.4s ease-in-out infinite",
           strokeDashoffset: 60,
         }}
       />
@@ -176,7 +189,10 @@ function RecoveryAnim({ playKey }: { playKey: number }) {
         fill="none"
         stroke={C.green}
         strokeWidth="2"
-        style={{ animation: "glowPulse 2s ease-out forwards" }}
+        style={{
+          animation:
+            "glowPulse 2s ease-out forwards, coreIdlePulse 2.2s 2s ease-in-out infinite",
+        }}
       />
       {RECOVERY_FRAGMENTS.map((f, i) => (
         <rect
@@ -217,7 +233,13 @@ function CertificationAnim({ playKey }: { playKey: number }) {
       />
       <line x1="36" y1="20" x2="54" y2="20" stroke={C.sage} strokeWidth="1.6" opacity="0.7" />
       <line x1="36" y1="26" x2="54" y2="26" stroke={C.sage} strokeWidth="1.6" opacity="0.7" />
-      <g style={{ animation: "stampDrop 1.6s 0.6s ease-out forwards", opacity: 0 }}>
+      <g
+        style={{
+          animation:
+            "stampDrop 1.6s 0.6s ease-out forwards, stampIdlePulse 2s 2.2s ease-in-out infinite",
+          opacity: 0,
+        }}
+      >
         <circle
           cx="66"
           cy="38"

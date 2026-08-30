@@ -30,7 +30,7 @@ const PROCESS_STEPS = [
   {
     title: "Dismantling",
     description:
-      "Equipment is carefully disassembled into material streams -- metals, plastics, glass, and circuit boards.",
+      "Equipment is carefully disassembled into material streams: metals, plastics, glass, and circuit boards.",
     animType: "dismantling",
   },
   {

@@ -207,6 +207,83 @@ h6 {
   }
 }
 
+/* Idle loops that kick in once each Our Process step's one-shot intro
+   animation above finishes, so every step feels quietly alive rather than
+   freezing on its last frame (src/components/process-step-icons.tsx). Each
+   keyframe's 0%/100% state matches the intro's final frame exactly, so
+   there's no visual jump at the handoff. */
+@keyframes sortIdleTop {
+  0%,
+  100% {
+    transform: translateX(-16px) translateY(0);
+  }
+  50% {
+    transform: translateX(-16px) translateY(-2px);
+  }
+}
+
+@keyframes sortIdleBottom {
+  0%,
+  100% {
+    transform: translateX(16px) translateY(0);
+  }
+  50% {
+    transform: translateX(16px) translateY(2px);
+  }
+}
+
+@keyframes dismantleIdleLeft {
+  0%,
+  100% {
+    transform: translateX(-9px) rotate(-4deg);
+  }
+  50% {
+    transform: translateX(-9px) rotate(-6deg);
+  }
+}
+
+@keyframes dismantleIdleRight {
+  0%,
+  100% {
+    transform: translateX(9px) rotate(4deg);
+  }
+  50% {
+    transform: translateX(9px) rotate(6deg);
+  }
+}
+
+@keyframes dividerPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes coreIdlePulse {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes stampIdlePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
 /* Compliance & Reporting illustration (src/components/compliance-illustration.tsx) --
    plays once when the section scrolls into view. */
 @keyframes docDraw {

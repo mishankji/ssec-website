@@ -12,7 +12,7 @@ import { EquivalenciesSection } from "@/components/sustainability-equivalencies"
 export const metadata: Metadata = {
   title: "Sustainability",
   description:
-    "S S Enviro Care's approach to sustainable, certified e-waste processing -- circularity, climate commitments, and community impact.",
+    "S S Enviro Care's approach to sustainable, certified e-waste processing, covering circularity, climate commitments, and community impact.",
 };
 
 const GALLERY = [
@@ -87,11 +87,11 @@ export default function SustainabilityPage() {
             <Eyebrow>Our Philosophy</Eyebrow>
             <p className="mt-4 max-w-lg text-ink/70">
               We believe the most sustainable device is the one that never
-              reaches a landfill. Every step of our process -- from
-              collection to recovery -- is designed to keep materials in
-              circulation, reduce dependence on raw extraction, and displace
-              the unsafe, informal handling that still dominates e-waste
-              management in India.
+              reaches a landfill. Every step of our process, from collection
+              to recovery, is designed to keep materials in circulation,
+              reduce dependence on raw extraction, and displace the unsafe,
+              informal handling that still dominates e-waste management in
+              India.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
@@ -109,7 +109,7 @@ export default function SustainabilityPage() {
             Where your materials go
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-ink/70">
-            Not landfilled -- reintroduced. Here&apos;s what happens to the
+            Not landfilled, but reintroduced. Here&apos;s what happens to the
             materials we recover.
           </p>
         </ScrollReveal>

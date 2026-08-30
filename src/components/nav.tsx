@@ -73,19 +73,6 @@ export function Nav() {
               </Link>
             </li>
           ))}
-          <li>
-            <Link
-              href="/contact"
-              className={cn(
-                "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
-                solid
-                  ? "bg-forest text-offwhite hover:bg-forest/90"
-                  : "bg-vivid text-ink hover:bg-vivid/90"
-              )}
-            >
-              Get a Quote
-            </Link>
-          </li>
         </ul>
 
         <button
@@ -112,15 +99,6 @@ export function Nav() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link
-                href="/contact"
-                className="inline-block rounded-full bg-forest px-4 py-2 text-sm font-semibold text-offwhite"
-                onClick={() => setOpen(false)}
-              >
-                Get a Quote
-              </Link>
-            </li>
           </ul>
         </div>
       )}

@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "The contact form isn't fully set up yet -- please email us directly at " +
+          "The contact form isn't fully set up yet. Please email us directly at " +
           TO_ADDRESS,
       },
       { status: 500 }

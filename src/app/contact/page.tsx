@@ -26,7 +26,7 @@ const FAQS = [
   },
   {
     q: "Do you provide certificates for recycled e-waste?",
-    a: "Yes, we provide official Certificates of Recycling/Disposal for all e-waste processed through our facility, including details such as the type and quantity of waste, date of collection, and recycling method -- usable for compliance and sustainability reporting.",
+    a: "Yes, we provide official Certificates of Recycling/Disposal for all e-waste processed through our facility, including details such as the type and quantity of waste, date of collection, and recycling method. These are usable for compliance and sustainability reporting.",
   },
   {
     q: "What happens to the e-waste after collection?",
@@ -34,7 +34,7 @@ const FAQS = [
   },
   {
     q: "Are there any charges for e-waste collection?",
-    a: "Pricing varies based on the type and quantity of e-waste, as well as your location. For certain high-value items, we may offer buyback options. Contact our team for a customized quote -- large corporate clients can access special contract rates.",
+    a: "Pricing varies based on the type and quantity of e-waste, as well as your location. For certain high-value items, we may offer buyback options. Contact our team for a customized quote. Large corporate clients can access special contract rates.",
   },
   {
     q: "How can my company benefit from your buyback program?",

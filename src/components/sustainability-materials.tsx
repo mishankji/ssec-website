@@ -2,6 +2,7 @@
 
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { FlipCard } from "@/components/flip-card";
+import { RecycleConverge } from "@/components/recycle-converge";
 
 // Defined together in this client module for the same reason as the other
 // flip-grid components: the MATERIALS data below pairs each entry with a
@@ -53,31 +54,6 @@ const MATERIALS: {
     destination: "Reprocessed into construction-grade steel",
   },
 ];
-
-/** Small circular loop with an arrowhead -- the section's anchor visual. */
-export function CircularLoopIcon() {
-  return (
-    <svg viewBox="0 0 120 120" width={88} height={88}>
-      <path
-        d="M60 30 a30 30 0 1 1 -21 8.8"
-        fill="none"
-        stroke="var(--color-forest)"
-        strokeWidth={4.5}
-        strokeLinecap="round"
-      />
-      <path d="M32 32 l6 8 l-10 2 z" fill="var(--color-forest)" />
-      <path
-        d="M85 60 a25 25 0 0 1 -8 18.5"
-        fill="none"
-        stroke="var(--color-sage)"
-        strokeWidth={4.5}
-        strokeLinecap="round"
-      />
-      <path d="M82 84 l-8 -3 l4 -9 z" fill="var(--color-sage)" />
-      <circle cx={60} cy={60} r={9} fill="var(--color-brass)" />
-    </svg>
-  );
-}
 
 function MaterialIcon({ type, size }: { type: MaterialType; size: number }) {
   const common = { width: size, height: size, viewBox: "0 0 120 120" };
@@ -188,8 +164,8 @@ export function MaterialsSection() {
   return (
     <>
       <ScrollReveal delay={0.1}>
-        <div className="mb-8 flex justify-center">
-          <CircularLoopIcon />
+        <div className="mx-auto mb-8 w-32">
+          <RecycleConverge color="#6B8F71" height={90} />
         </div>
       </ScrollReveal>
 

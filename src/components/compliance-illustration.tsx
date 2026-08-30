@@ -34,13 +34,16 @@ function useInView(threshold = 0.3) {
 
 /**
  * A document with three lines ticking off one by one, then a certificate
- * seal dropping in. Plays once, driven by the `play` flag from the
- * scroll-into-view hook below. Keyframes live in globals.css alongside the
- * Our Process step animations.
+ * seal dropping in, driven by the `play` flag from the scroll-into-view
+ * hook below. Keyed by `playKey` so the wrapper can force a full remount
+ * (the same "remount to replay" pattern used for the Our Process icons in
+ * process-step-icons.tsx) to replay the sequence on hover or tap, since
+ * `play` alone stays true after the first scroll-triggered reveal.
+ * Keyframes live in globals.css alongside the Our Process step animations.
  */
-function ComplianceDoc({ play }: { play: boolean }) {
+function ComplianceDoc({ play, playKey }: { play: boolean; playKey: number }) {
   return (
-    <svg viewBox="0 0 220 220" width="220" height="220">
+    <svg key={playKey} viewBox="0 0 220 220" width="220" height="220">
       {/* document outline */}
       <rect
         x="40"
@@ -139,9 +142,30 @@ function ComplianceDoc({ play }: { play: boolean }) {
 export function ComplianceIllustration() {
   const [ref, inView] = useInView(0.3);
 
+  // Bumping this remounts <ComplianceDoc>'s keyed <svg>, replaying the
+  // sequence from the start regardless of `inView` (which only flips once
+  // and stays true). Hover handles desktop replay; the click handler below
+  // only replays on devices that can't hover, so a desktop click right
+  // after a hover doesn't double-trigger it.
+  const [playKey, setPlayKey] = useState(0);
+  const replay = () => setPlayKey((k) => k + 1);
+
+  const handleClick = () => {
+    const canHover =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(hover: hover)").matches;
+    if (canHover) return;
+    replay();
+  };
+
   return (
-    <div ref={ref}>
-      <ComplianceDoc play={inView} />
+    <div
+      ref={ref}
+      onMouseEnter={replay}
+      onClick={handleClick}
+      className="cursor-pointer"
+    >
+      <ComplianceDoc play={inView} playKey={playKey} />
     </div>
   );
 }

@@ -33,7 +33,7 @@ export default function AboutPage() {
         <ScrollReveal>
           <Eyebrow>Why We Exist</Eyebrow>
           <p className="mt-4 max-w-2xl text-ink/70">
-            India generates over 1.8 million tonnes of e-waste every year —
+            India generates over 1.8 million tonnes of e-waste every year,
             and an estimated 90% of it is still handled by the informal
             sector, often without basic safety measures or environmental
             safeguards.
@@ -42,7 +42,7 @@ export default function AboutPage() {
             SS Envirocare was founded because we saw this gap up close:
             valuable resources being lost, and people handling hazardous
             material without protection. We started in Jaipur with a simple
-            aim — build a recycling operation that does this properly:
+            aim: build a recycling operation that does this properly,
             certified, safe, and accountable at every step.
           </p>
         </ScrollReveal>

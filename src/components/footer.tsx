@@ -60,8 +60,14 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-offwhite/10 px-6 py-5 text-center text-xs text-offwhite/60">
-        © {new Date().getFullYear()} S S Enviro Care. All rights reserved.
+      <div className="flex flex-col items-center gap-3 border-t border-offwhite/10 px-6 py-5 text-xs text-offwhite/60 sm:flex-row sm:justify-between">
+        <p>© {new Date().getFullYear()} S S Enviro Care. All rights reserved.</p>
+        <Link
+          href="/login"
+          className="text-offwhite/60 transition-colors hover:text-brass"
+        >
+          Employee Login
+        </Link>
       </div>
     </footer>
   );
