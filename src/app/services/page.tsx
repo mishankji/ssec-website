@@ -136,7 +136,7 @@ export default function ServicesPage() {
         <ScrollReveal className="text-center">
           <Eyebrow>Trusted By</Eyebrow>
           <h2 className="mt-3 font-heading text-2xl font-semibold text-forest md:text-3xl">
-            Businesses and institutions across Rajasthan trust us with
+            Businesses and institutions across India trust us with
             their e-waste.
           </h2>
         </ScrollReveal>
