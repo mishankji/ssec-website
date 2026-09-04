@@ -3,7 +3,12 @@
  *
  * Server-only: uses Node's `googleapis` client and secrets from
  * process.env. Never import this from a Client Component -- call it from
- * an API route (src/app/api/.../route.ts) or a Server Action instead.
+ * an API route (src/app/api/.../route.ts) or a Server Action instead. That
+ * used to be enforced by this comment alone; the `import "server-only";`
+ * below now makes an accidental Client Component import fail loudly at
+ * build time instead of surfacing as a confusing bundler error (a
+ * quotation-generator.tsx -> quotations.ts -> google-sheets.ts ->
+ * googleapis chain hit exactly this: "Can't resolve 'child_process'").
  *
  * Auth: uses the OAuth refresh token set up via
  * scripts/get-google-refresh-token.mjs (see GOOGLE_OAUTH_* in .env.local).
@@ -12,6 +17,8 @@
  * "_Counter" tab with cell A1 = 0 (the last-issued form number) and B1 left
  * blank (used as a lock flag) -- see the locking section below.
  */
+
+import "server-only";
 
 import { google, sheets_v4 } from "googleapis";
 import { randomUUID } from "crypto";
@@ -603,4 +610,105 @@ export async function rejectForm6(submissionId: string, reason: string): Promise
   };
   await writeRecordRow(updated);
   return updated;
+}
+
+// ---------------------------------------------------------------------------
+// Phase 3 (Quotation Generator), Step 5: approval logging to the
+// "Quotations" tab (see scripts/create-quotations-sheet-tab.mjs for the
+// header row this must match column-for-column). Quotations themselves
+// live in Supabase, not Sheets -- this is a write-only append triggered by
+// approveQuotation() in src/lib/quotations.ts, purely for the owner's
+// existing paper-trail habit of keeping everything in one spreadsheet.
+// Reuses this file's own auth client / error formatting rather than
+// duplicating them.
+// ---------------------------------------------------------------------------
+
+const QUOTATIONS_SHEET_NAME = "Quotations";
+
+export interface QuotationSheetItem {
+  description: string;
+  rate: string;
+  unit: string;
+  unit_other: string;
+  quantity: string;
+  amount: number;
+}
+
+export interface QuotationSheetLogEntry {
+  quotationNumber: string; // full "QT/26-27/xxx"
+  quotationDate: string; // ISO yyyy-mm-dd
+  customerName: string;
+  customerContact: string;
+  customerAddress: string;
+  rateOnly: boolean;
+  items: QuotationSheetItem[];
+  taxableAmount: number | null;
+  sgstAmount: number | null;
+  cgstAmount: number | null;
+  totalAmount: number | null;
+  submittedBy: string;
+  approvedBy: string;
+  approvedAt: string; // ISO timestamp
+}
+
+function quotationUnitLabel(unit: string, unitOther: string): string {
+  return unit === "other" ? unitOther || "other" : unit;
+}
+
+/**
+ * One line per item: "description x quantity unit @ rate/unit = amount" for
+ * a priced quotation, or "description @ rate/unit" for rate-only (no
+ * quantity/amount to show) -- exact wording per the brief. Joined with "; ".
+ */
+function quotationItemsSummary(items: QuotationSheetItem[], rateOnly: boolean): string {
+  return items
+    .map((item) => {
+      const unitLabel = quotationUnitLabel(item.unit, item.unit_other);
+      return rateOnly
+        ? `${item.description} @ ${item.rate}/${unitLabel}`
+        : `${item.description} x ${item.quantity} ${unitLabel} @ ${item.rate}/${unitLabel} = ${item.amount}`;
+    })
+    .join("; ");
+}
+
+/**
+ * Appends one row to the "Quotations" tab for a just-approved quotation.
+ * Called from approveQuotation() -- deliberately does NOT roll back the
+ * Supabase approval if this fails (the approval in Supabase is the source
+ * of truth; this sheet is a secondary log), so a Sheets hiccup never blocks
+ * an approver. The caller wraps this in try/catch and only logs the
+ * failure -- see the comment on that call site.
+ */
+export async function logApprovedQuotationToSheet(entry: QuotationSheetLogEntry): Promise<void> {
+  assertConfigured();
+  const row: (string | number)[] = [
+    entry.quotationNumber,
+    entry.quotationDate,
+    entry.customerName,
+    entry.customerContact,
+    entry.customerAddress,
+    entry.rateOnly ? "Yes" : "No",
+    quotationItemsSummary(entry.items, entry.rateOnly),
+    entry.taxableAmount ?? "",
+    entry.sgstAmount ?? "",
+    entry.cgstAmount ?? "",
+    entry.totalAmount ?? "",
+    entry.submittedBy,
+    entry.approvedBy,
+    entry.approvedAt,
+  ];
+
+  const sheets = getSheetsClient();
+  const range = `${QUOTATIONS_SHEET_NAME}!A:A`;
+  try {
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: SPREADSHEET_ID,
+      range,
+      valueInputOption: "USER_ENTERED",
+      insertDataOption: "INSERT_ROWS",
+      requestBody: { values: [row] },
+    });
+  } catch (err) {
+    throw new Error(`Sheets append to "${range}" failed: ${describeGoogleApiError(err)}`);
+  }
 }

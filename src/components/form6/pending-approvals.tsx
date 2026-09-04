@@ -99,7 +99,7 @@ export function PendingApprovals({
   return (
     <section className="rounded-2xl border border-brass/20 bg-brass/5 p-6">
       <div className="flex items-center justify-between">
-        <h2 className="font-heading text-lg font-semibold text-forest">Pending Approvals</h2>
+        <h2 className="font-heading text-lg font-semibold text-forest">Pending Form-6 Approvals</h2>
         <span className="inline-flex min-w-[1.75rem] items-center justify-center rounded-full bg-forest px-2 py-0.5 text-xs font-bold text-offwhite">
           {submissions.length}
         </span>

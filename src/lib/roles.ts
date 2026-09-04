@@ -30,3 +30,13 @@ export function isApprover(email: string | null | undefined): boolean {
 export function getApproverEmails(): string[] {
   return APPROVER_EMAILS;
 }
+
+/**
+ * The dashboard's page heading, role-conditional -- single source of
+ * truth so /dashboard and /dashboard/approvals can't drift apart on what
+ * an approver sees here ("Master Dashboard") versus everyone else
+ * ("Employee Dashboard", unchanged from before this existed).
+ */
+export function dashboardHeading(role: Role): string {
+  return role === "approver" ? "Master Dashboard" : "Employee Dashboard";
+}
